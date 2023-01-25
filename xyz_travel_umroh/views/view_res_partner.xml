@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="res_partner_inherit_form_view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//group" position="after">
+            <group string="Additional Information" attrs="{'invisible':[('company_type', '=', 'company')]}">
+              <group>
+                <field name="ktp_no"/>
+                <field name="father_name"/>
+                <field name="job"/>
+                <field name="date_birth"/>
+                <field name="marital_status"/>
+              </group>
+              <group>
+                <field name="gender"/>
+                <field name="mother_name"/>
+                <field name="place_birth"/>
+                <field name="blood_type"/>
+                <field name="education"/>
+              </group>
+              <group colspan="2">
+                <field name="clothes_size"/>
+              </group>
+            </group>
+            <group string="Passport Information" attrs="{'invisible':[('company_type', '=', 'company')]}">
+              <group>
+                <field name="pass_no"/>
+                <field name="date_exp"/>
+              </group>
+              <group>
+                <field name="pass_name"/>
+                <field name="date_isue"/>
+              </group>
+              <group colspan="2">
+                <field name="imigrasi"/>
+              </group>
+            </group>
+            <group string="Scan Document" attrs="{'invisible':[('company_type', '=', 'company')]}">
+              <group>
+                <field name="pass_img" widget="image"/>
+                <field name="doc_img" widget="image"/>
+              </group>
+              <group>
+                <field name="ktp_img" widget="image"/>
+                <field name="kk_img" widget="image"/>
+              </group>
+            </group>
+          </xpath>
+          <xpath expr="//group[@name='container_row_2']" position="inside">
+            <group string="Travel">
+              <field name="airlines"/>
+              <field name="hotel"/>
+            </group>
+          </xpath>
+        </field>
+      </record>
+
+</odoo>

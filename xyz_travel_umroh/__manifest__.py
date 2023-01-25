@@ -18,15 +18,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'mrp', 'sale'],
+    'depends': ['base', 'mail', 'mrp', 'sale', 'product'],
 
     # always loaded
     'data': [
-        'security/security.xml',
+        # 'security/security.xml',
         'security/ir.model.access.csv',
-        'data/ir_sequence_travel_package.xml',
-        'report/travel_package_report.xml',
-        'views/views.xml',
+        'data/ir_sequence_product.xml',
+        # 'data/ir_module_category_data.xml',
+        # 'report/travel_package_report.xml',
+        'views/view_product_template.xml',
+        'views/view_res_partner.xml',
+        'views/view_sale_order.xml',
         'views/action_view.xml',
         'views/menu_view.xml',
     ],

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="sale_order_umrah_view_form" model="ir.ui.view">
+    <field name="name">sale.order.umrah.view.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="arch" type="xml">
+      <!-- <xpath expr="//field[@name='partner_id']" position="attributes">
+      <attribute name="context">context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}</attribute>
+      <attribute name="domain">[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('option_inv', '=', True)]</attribute>
+    </xpath> -->
+      <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+        <field name="product_id" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}" options="{'no_open': True, 'no_create': True}" force_save="1" context="{'partner_id': parent.partner_id,'quantity': product_uom_qty,'pricelist': parent.pricelist_id,'uom':product_uom,'company_id': parent.company_id,'default_lst_price': price_unit,'default_description_sale': name, 'option_inv': True}" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id), ('option_inv', '=', True), ('state', '=', 'confirm')]" widget="product_configurator"/>
+      </xpath>
+      <xpath expr="//notebook" position="inside">
+        <page string="Manifest">
+          <field name="manifest_line">
+            <tree>
+              <field name="title" />
+              <field name="name" />
+              <field name="gender" />
+              <field name="pass_name" />
+              <field name="pass_no" />
+              <field name="ktp_no" />
+              <field name="date_birth" />
+              <field name="place_birth" />
+              <field name="date_isue" />
+              <field name="date_exp" />
+              <field name="imigrasi" />
+              <field name="age" force_save="1" />
+              <field name="room_type" />
+              <field name="mahram" />
+            </tree>
+            <form>
+              <sheet>
+                <group string="Personal">
+                  <group>
+                    <field name="name" />
+                    <field name="ktp_no" readonly="1" />
+                    <field name="place_birth" readonly="1" />
+                    <field name="room_type" />
+                  </group>
+                  <group>
+                    <field name="title" />
+                    <field name="date_birth" readonly="1" />
+                    <field name="age" force_save="1" readonly="1" />
+                    <field name="mahram" />
+                  </group>
+                </group>
+                <group string="Passport">
+                  <group>
+                    <field name="pass_no" readonly="1" />
+                    <field name="date_isue" readonly="1" />
+                    <field name="imigrasi" readonly="1" />
+                  </group>
+                  <group>
+                    <field name="pass_name" readonly="1" />
+                    <field name="date_exp" readonly="1" />
+                    <field name="notes" />
+                  </group>
+                </group>
+                <group string="Scan Document">
+                  <field name="pass_img" readonly="1" widget="image" />
+                  <field name="ktp_img" readonly="1" widget="image" />
+                  <field name="doc_img" readonly="1" widget="image" />
+                  <field name="kk_img" readonly="1" widget="image" />
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

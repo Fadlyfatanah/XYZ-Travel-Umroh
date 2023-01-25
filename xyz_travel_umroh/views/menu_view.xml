@@ -4,7 +4,7 @@
     <menuitem
     id="travel_umroh_menu"
     name="Travel Umroh"
-web_icon="ff_travel_umroh,static/description/icon.png"
+    web_icon="xyz_travel_umroh,static/description/icon.png"
 />
 
 <menuitem
@@ -17,12 +17,12 @@ web_icon="ff_travel_umroh,static/description/icon.png"
     id="product_menu"
     name="Product"
     parent="master_data_menu"
-    action="sale.product_template_action"
+    action="xyz_travel_umroh.product_template_umroh_action"
 />
 
 <menuitem
     id="paket_product_menu"
-    name="Paket Product"
+    name="Bills of Materials"
     parent="master_data_menu"
     action="mrp.mrp_bom_form_action"
 />
@@ -49,16 +49,16 @@ web_icon="ff_travel_umroh,static/description/icon.png"
 />
 
 <menuitem
-    id="transaction_menu"
-    name="Transaction"
-    parent="travel_umroh_menu"
+    id="taxes_menu"
+    name="Taxes"
+    parent="master_data_menu"
+    action="account.action_tax_form"
 />
 
 <menuitem
-    id="travel_package_menu"
-    name="Travel Package"
-    parent="transaction_menu"
-    action="travel_package_action"
+    id="transaction_menu"
+    name="Transaction"
+    parent="travel_umroh_menu"
 />
 
 <menuitem

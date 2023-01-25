@@ -1,34 +1,5 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
-
-class ManifestLinesTravel(models.Model):
-    _name = 'manifest.lines.travel'
-    _description = 'Manifest Lines Travel'
-    _rec_name = 'pass_name'
-    
-    pass_name = fields.Char(string='Passport Name')
-    age = fields.Integer('Age')
-    travel_id = fields.Many2one('travel.package', string='Travel')
-    mahram = fields.Many2one('res.partner', string='Mahram')
-    agent = fields.Many2one('res.users')
-    ktp_no = fields.Char(string='KTP No')
-    date_birth = fields.Date(string='Date of Birth')
-    place_birth = fields.Char(string='Place of Birth')
-    pass_no = fields.Char(string='Passport No')
-    date_exp = fields.Date(string='Date of Expiry')
-    date_isue = fields.Date(string='Date Issued')
-    imigrasi = fields.Char(string='Imigrasi')
-    room_type = fields.Selection([
-        ('del', 'Deluxe'),
-        ('tri', 'Triple'),
-        ('quad', 'Quad'),
-        ('reg', 'Regular')
-    ], string='Room Type')
-    gender = fields.Selection([
-        ('man', 'Man'),
-        ('woman', 'Woman')
-    ], string='Gender')
 
 class ManifestLines(models.Model):
     _name = 'manifest.lines'
@@ -50,11 +21,12 @@ class ManifestLines(models.Model):
     title = fields.Selection(related='name.title')
     gender = fields.Selection(related='name.gender')
     partner_id = fields.Many2one('res.partner', string='Partner')
-    travel_id = fields.Many2one('travel.package', string='Travel')
+    product_id = fields.Many2one('product.template')
     age = fields.Integer()
     mahram = fields.Many2one('res.partner', string='Mahram')
     notes = fields.Char(string='Notes')
     order_id = fields.Many2one('sale.order', string='Sale')
+    agent = fields.Many2one('res.users')
     room_type = fields.Selection([
         ('del', 'Deluxe'),
         ('tri', 'Triple'),
